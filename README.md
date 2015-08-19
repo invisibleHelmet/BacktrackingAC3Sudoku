@@ -4,7 +4,7 @@ Solving Sudoku using AC3 and Backtracking
 Overview
 --------
 
-AC3 uses constraints to limit the possible values for each variable or remove values from the variables domain. If a domain is limited to one value from the constraints AC3 will then update all the affected variables domains to see if it can further reduce their domains. This process is a type of inference called constraint propagation. As you will see in my implementation, constraint propagation can not always completely limit the domain to one value. If multiple domains can not be limited to one value then it will not find a solution to the puzzle. To ensure a solution after using AC3 a method called backtracking can be used. Backtracking applies searching to constraint propagation to ensure a solution. When there are multiple values left in a domain of a variable backtracking will choose each one and apply constraint propagation again to see if it can find the correct values to remove from the domains.
+Each empty spot on the Sudoku board will have a domain of possible values that could be placed in the spot. AC3 will check each empty spot's row and column for existing values to eliminate from the domain. If the spot has one value left in its domain, it will fill the spot with that value. If AC3 is unable to reduce the domain to one then the backtracking method will be called. The backtracking method will randomly choose a value from the spot's domain, place it on the board, and apply AC3 again. The backtracking method will do this recursively until a solution is found and then return the solution.
 
 Pre-requisites
 --------------
